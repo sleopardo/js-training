@@ -1,37 +1,36 @@
 1 - Generate from the following object a constructor function
 
 ```javascript
-var person = {
-    _name: "Juan",
 
-    getName: function() {
-        return this._name;
-    },
+function Person(config) {
+    this._name: config.name;
+}
 
-    getSteps: function() {
+Person.prototype.getName = function() {
+    return this._name;
+}
 
-        return this.walk.steps;
-    },
+Person.prototype.getSteps = function() {
+    return this.walk.steps;
+}
 
-    walk: (function () {
+Person.prototype.walk = (function () {
+    function walk() {
+        walk.steps++;
+    }
 
-        function walk() {
+    walk.steps = 0;
+    return walk;
+})();
 
-            walk.steps++;
-        }
 
-        walk.steps = 0;
-
-        return walk;
-    })();
-};
 ```
 
 2 - Implement a function `construct` with the following signature:
 
 `construct(Constructor: Function, args: Array): Object`
 
-It must reproduce exactly the behaviour of the operator `new`. 
+It must reproduce exactly the behaviour of the operator `new`.
 
 **Example**
 
