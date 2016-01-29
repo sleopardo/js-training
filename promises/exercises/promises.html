@@ -8,18 +8,35 @@
     <script type="text/javascript">
 
     /////////// Ejercicio 1 //////////////
-    // Escribir un wrapper "parseJSON" de JSON.parse que reciba un parámetro, 
-    // que devuelva una promise y se resuelva o se rejecte según si 
+    // Escribir un wrapper "parseJSON" de JSON.parse que reciba un parámetro,
+    // que devuelva una promise y se resuelva o se rejecte según si
     // el elemento pasado por parámetro es json válido o no
+
+    function parseJSON(json) {
+
+      return new Promise(function(resolve, reject) {
+          try {
+              var result = JSON.parse(json);
+              resolve(result);
+          } catch (error) {
+              reject(error);
+          }
+
+      });
+
+    }
 
     /////////// Ejercicio 2 //////////////
     // Escribir una función "arePrime" que acepte una promise o array de promises por parámetro
     // y resuelva únicamente si todas las promises recibidas por parámetro se resolvieron
     // y además si el valor con el cual se resolvieron es un número y dicho número es primo
 
+    function arePrime(param) {
+
+    }
+
     </script>
     <script type="text/javascript" src="promises-post.js"></script>
-    </script>
   </head>
   <body>
   </body>
