@@ -7,11 +7,15 @@
 // - getSteps: It returns the amount of steps done
 // - walk    : It increments the amount of steps done
 
-class Walker {
+export default class Walker {
+
+    static init(obj) {
+        obj._legs = legs;
+        obj._steps = 0;
+    }
 
     constructor(legs) {
-        this._legs = legs;
-        this._steps = 0;
+        this.constructor.init(this);
     }
 
     getLegs() {
@@ -26,8 +30,4 @@ class Walker {
         this._steps++;
     }
 
-}
-
-export {
-    Walker as default
 }

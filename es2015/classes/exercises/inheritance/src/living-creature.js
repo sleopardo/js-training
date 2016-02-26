@@ -8,10 +8,21 @@
 // - consumeOxygen     : It decrements the amount of remaining oxygen
 // - hasDied           : It returns true if the amount of oxygen is zero and false otherwise
 
-class LivingCriature {
+export default class LivingCriature {
 
-    constructor (oxygen) {
+    static init(obj) {
         this._oxygen = oxygen;
+    }
+
+    constructor(oxygen) {
+        if (isNaN(oxygen)) {
+            throw new Error('Oxygen is not a number');
+        }
+
+        if (oxygen < 0) {
+            throw new Error('Oxygen is less than zero');
+        }
+        this.constructor.init(this);
     }
 
     getRemainingOxygen() {
@@ -19,18 +30,21 @@ class LivingCriature {
     }
 
     breath() {
+        if (this.hasDied()) {
+            throw new Error('Oxygen is not a number');
+        }
         this._oxygen++;
     }
 
     consumeOxygen() {
+        if (this.hasDied()) {
+            throw new Error('Oxygen is not a number');
+        }
         this._oxygen--;
     }
 
     hasDied() {
-        return this._oxygen === 0 && false;
+        return this._oxygen === 0;
     }
-}
 
-export {
-    LivingCriature as default
 }

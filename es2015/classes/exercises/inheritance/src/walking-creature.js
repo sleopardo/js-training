@@ -13,9 +13,20 @@
 import LivingCreature from "./living-creature";
 import Walker from "./walker";
 
-class WalkingCreature {
-    constructor() {
-        Object.assign(this.prototype, LivingCreature.prototype, Walker.prototype);
+function mixins (...constructors) {
+    function Base(oxygen, legs) {
+        initializers.forEach(init => init(this));
+    }
+    const prototypes = constructors.map(constructor => constructor.prototype);
+    Object.assign(Base.prototype, ...prototypes);
+    const initializers = constructors.map(constructor => constructor.init);
+    return Base;
+}
+
+export default class WalkingCreature extends mixins(LivingCreature.prototype, Walker.prototype) {
+
+    constructor(oxygen, legs) {
+        super(oxygen, legs);
     }
 
     walk() {
@@ -23,12 +34,9 @@ class WalkingCreature {
             throw new Error('Ta muertito');
         }
 
-        LivingCreature.consumeOxygen();
         Walker.walk();
+        LivingCreature.consumeOxygen();
+
 
     }
-}
-
-export {
-    WalkingCreature as default
 }

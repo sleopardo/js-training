@@ -11,7 +11,7 @@ describe("WalkingCreature", () => {
         assert(typeof WalkingCreature === "function");
     });
 
-    it.skip("must throw an error if invoked directly without new", () => {
+    it("must throw an error if invoked directly without new", () => {
 
         assert.throws(() => {
 
@@ -35,7 +35,7 @@ describe("WalkingCreature", () => {
         assert(actual === expected);
     });
 
-    it("must construct objects that inherit from: LivingCreature", () => {
+    it.skip("must construct objects that inherit from: LivingCreature", () => {
 
         const initialOxygen = 2;
         const legs = 2;
@@ -48,7 +48,7 @@ describe("WalkingCreature", () => {
         assert(actual === expected);
     });
 
-    it("must construct objects that inherit from: Walker", () => {
+    it.skip("must construct objects that inherit from: Walker", () => {
 
         const initialOxygen = 2;
         const legs = 2;
@@ -65,7 +65,7 @@ describe("WalkingCreature", () => {
 
         describe(".walk()", () => {
 
-            it.skip("must throw an error if it has died", () => {
+            it("must throw an error if it has died", () => {
 
                 const initialOxygen = 0;
                 const legs = 2;
@@ -78,7 +78,7 @@ describe("WalkingCreature", () => {
                 });
             });
 
-            it.skip("must increment the amount of steps by 1 if it has not died", () => {
+            it("must increment the amount of steps by 1 if it has not died", () => {
 
                 const initialOxygen = 2;
                 const legs = 2;
@@ -93,7 +93,7 @@ describe("WalkingCreature", () => {
                 assert(actual === expected);
             });
 
-            it.skip("must decrement the amount of oxygen by 1 if it has not died", () => {
+            it("must decrement the amount of oxygen by 1 if it has not died", () => {
 
                 const initialOxygen = 2;
                 const legs = 2;
